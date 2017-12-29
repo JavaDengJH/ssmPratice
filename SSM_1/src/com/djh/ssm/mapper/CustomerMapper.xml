@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djh.ssm.mapper.CustomerMapper">
+
+	<insert id="addCustomer" parameterType="Customer">
+		insert into tb_customer values(#{id},#{name},#{phone},#{IdCard},#{password})
+	</insert>
+
+	<delete id="deleteCustomer" parameterType="int">
+		delete from tb_customer where customerID = #{id}
+	</delete>
+
+<!-- 	<update id="updateCustomer" parameterType="String,int" >
+		update tb_customer set customerName=#{name} where customerID=#{id}
+	</update> -->
+
+    <select id="findById" parameterType="int" resultType="Customer">
+        select * from tb_customer where customerID=#{id}
+    </select>
+    
+     <select id="findByCondition" parameterType="String" resultType="Customer">
+        select * from tb_customer where customerName=#{name}
+    </select>
+    
+      <select id="findAll" resultType="Customer">
+        select * from tb_customer
+    </select>
+    
+</mapper>
